@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Generate or validate short code
-    let shortCode = customCode || nanoid(6);
+    const shortCode = customCode || nanoid(6);
 
     // Check if custom code already exists
     if (customCode && memoryDb.getUrl(customCode)) {
