@@ -3,10 +3,10 @@ import { memoryDb } from '@/lib/memory-db';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { shortCode: string } }
+  { params }: { params: Promise<{ shortCode: string }> }
 ) {
   try {
-    const shortCode = params.shortCode;
+    const { shortCode } = await params;
 
     // Fetch the URL from memory
     const urlData = memoryDb.getUrl(shortCode);
